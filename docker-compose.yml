@@ -42,3 +42,19 @@ services:
       SCHEMA_REGISTRY_HOST_NAME: kafka-schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'PLAINTEXT://kafka1:19092'
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+
+  producer:
+    build:
+      context: ./producer
+    environment:
+      KAFKA_BROKER: kafka:9092
+    depends_on:
+      - kafka1
+
+  consumer:
+    build:
+      context: ./consumer
+    environment:
+      KAFKA_BROKER: kafka:9092
+    depends_on:
+      - kafka1      
