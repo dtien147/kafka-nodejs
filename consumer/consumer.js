@@ -4,7 +4,7 @@ const { Kafka } = require('kafkajs');
 
 const kafka = new Kafka({
     clientId: 'my-app',
-    brokers: ['localhost:9092'], // Change if your Kafka broker is running on a different port
+    brokers: ['kafka1:29092'], // Change if your Kafka broker is running on a different port
 });
 
 const consumer = kafka.consumer({ groupId: 'test-group' });
